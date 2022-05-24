@@ -1,0 +1,127 @@
+<div class="container">
+        <label for="navn"class="label-name">Name</label>
+        <input id="navn" type="text">
+
+        <label for="email" class="labelemail">Email</label>
+        <input type="email" id="email">
+
+        <label for="emne" class="label-emne">Subject</label>
+        <input type="text" id="emne">
+        
+        <label for="besked" class="label-besked">Message</label>
+       <textarea name="besked" id="besked" cols="50" rows="8"></textarea>
+
+       <button onclick="sendEmail()" id="sendknap">Send</button>
+       
+    </div>
+    
+    
+    
+    
+    
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    
+    
+    
+<script type="text/javascript">
+(function() {
+emailjs.init("NZIX7iHrBCyYkm4wz");
+})();
+</script>
+
+
+<script>
+    const userID = "NZIX7iHrBCyYkm4wz"
+const serviceID = "service_9pwtggc"
+const templateID = "template_b01mqt7"
+
+function sendEmail(){
+    var navn = document.getElementById("navn").value;
+    var email = document.getElementById("email").value;
+    var emne = document.getElementById("emne").value;
+    var besked = document.getElementById("besked").value;
+    var emailData = {
+        name: navn,
+        email: email,
+        subject: emne,
+        message: besked,
+
+    }
+    emailjs.send(serviceID, templateID, emailData, userID);
+    
+    alert("Thank you. Your message has been sent.");
+    
+    document.getElementById('navn').value='';
+      document.getElementById('email').value='';
+      
+        document.getElementById('emne').value='';
+        
+          document.getElementById('besked').value='';
+            
+}
+
+</script>
+
+
+
+
+
+<style>
+    .container{
+        display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 55vh;
+  
+    }
+    
+    .label-name{
+        margin-top: 10px;
+        margin-bottom: 5px;
+       color: #A8887E;
+    }
+    
+    .labelemail{
+        margin-top: 10px;
+        margin-bottom: 5px;
+      color: #A8887E;
+    }
+    
+    .label-emne{
+       margin-top: 10px;
+       margin-bottom:5px;
+      color: #A8887E;
+    }
+    
+    .label-besked{
+        margin-top: 30px;
+        margin-bottom: 5px;
+        color: #A8887E;
+        
+    }
+    
+    
+    #sendknap{
+        background-color: #53332D;
+        border-radius: 45px;
+        font-family: poppins;
+        font-size: 17px;
+        font-weight: 700;
+        margin-top: 25px;
+        margin-bottom: 20px;
+        box-shadow: 2px 10px 10px 0px rgb(0 0 0 / 50%);
+    }
+    
+    #sendknap:hover{
+         background-color: #53332D66;
+         
+    }
+    
+    #navn, #email, #emne, #besked{
+        border-color: #A8887E;
+    }
+    
+    
+</style>
+
